@@ -17,7 +17,14 @@ mongoose.connect(process.env.MONGO_URI)
 const referenceRoutes = require("./routes/referenceRoutes");
 app.use("/api/references", referenceRoutes);
 
+// Root route
+app.get("/", (req, res) => {
+    res.send("IPQuest Backend is Running 🚀");
+});
+
 // Start server
-app.listen(5000, () => {
-    console.log("Server running on port 5000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
