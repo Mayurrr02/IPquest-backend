@@ -7,6 +7,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+if (!process.env.MONGO_URI) {
+    console.error("MONGO_URI is not defined in environment variables");
+    process.exit(1);
+}
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
